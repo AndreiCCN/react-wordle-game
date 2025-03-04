@@ -25,7 +25,7 @@ export default observer(function Home() {
     <div className="w-screen h-screen flex flex-col justify-between items-center p-8">
       <div className="flex flex-col gap-2 text-center bg-gray-600 py-8 px-20 rounded-[50px]">
         <h1 className={`text-5xl uppercase ${headingStyle}`}>Re - Wordle</h1>
-        <h2 className={`text-2xl ${headingStyle}`}>React Worddle Game</h2>
+        <h2 className={`text-2xl ${headingStyle}`}>React Wordle Game</h2>
       </div>
       <div className="grid grid-cols-5 gap-2">
         {store.guesses.map((_, i) => (
