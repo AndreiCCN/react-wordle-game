@@ -1,4 +1,4 @@
-import words from "@/words.json";
+import words from "@/utils/words.json";
 export default {
   word: "",
   guesses: [],
@@ -9,9 +9,24 @@ export default {
   get lost() {
     return this.currentGuess === 6;
   },
+  get allGuesses() {
+    return this.guesses.slice(0, this.currentGuess).join("").split("");
+  },
+  get exactGuesses() {
+    return this.word.split("").filter((letter, i) => {
+      return this.guesses
+        .slice(0, this.currentGuess)
+        .map((word) => word[i])
+        .includes(letter);
+    });
+  },
+  get inexactGuesses() {
+    return this.word
+      .split("")
+      .filter((letter) => this.allGuesses.includes(letter));
+  },
   init() {
     this.word = words[Math.round(Math.random() * words.length)];
-    // @ts-ignore
     this.guesses.replace(new Array(6).fill(""));
     this.currentGuess = 0;
   },
@@ -28,17 +43,13 @@ export default {
       return this.submitGuess();
     }
     if (e.key === "Backspace") {
-      // @ts-ignore
       this.guesses[this.currentGuess] = this.guesses[this.currentGuess].slice(
         0,
-        // @ts-ignore
         this.guesses[this.currentGuess].length - 1
       );
       return;
     }
-    // @ts-ignore
     if (this.guesses[this.currentGuess].length < 5 && e.key.match(/^[A-z]$/)) {
-      // @ts-ignore
       this.guesses[this.currentGuess] =
         this.guesses[this.currentGuess] + e.key.toLowerCase();
     }

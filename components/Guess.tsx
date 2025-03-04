@@ -1,6 +1,5 @@
 import React from "react";
 
-// @ts-ignore
 const Guess = ({ isGuessed, guess, word }) => {
   return (
     <div className="grid grid-cols-5 gap-2 mb-2">
@@ -11,11 +10,11 @@ const Guess = ({ isGuessed, guess, word }) => {
           ? "bg-green-400"
           : word.includes(guess[i])
           ? "bg-yellow-400"
-          : "bg-black";
+          : "bg-red-400";
         return (
           <div
             key={`guess-letter-${i}`}
-            className={`${bgColor} w-16 h-16 flex justify-center items-center border border-gray-400 text-white font-bold uppercase`}
+            className={`${bgColor} w-16 h-16 flex justify-center items-center border rounded-xl border-gray-400 text-white font-bold uppercase`}
           >
             {guess[i]}
           </div>
