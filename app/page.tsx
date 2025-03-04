@@ -11,36 +11,34 @@ export default observer(function Home() {
   useEffect(() => {
     store.init();
 
-    window.addEventListener("keyup", store.handleKeyUp);
+    window.addEventListener("keyup", (e) => store.handleKeyUp(e));
 
     return () => {
-      window.removeEventListener("keyup", store.handleKeyUp);
+      window.removeEventListener("keyup", (e) => store.handleKeyUp(e));
     };
   }, []);
 
+  const headingStyle =
+    "font-bold text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-green-400";
+
   return (
-    <div className="w-screen h-screen flex flex-col justify-center items-center">
-      <h1 className="text-6xl fontbold uppercase text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-green-400">
-        Wordle
-      </h1>
-      {store.guesses.map((_, i) => (
-        <Guess
-          key={`guess-element-${i}`}
-          word={store.word}
-          guess={store.guesses[i]}
-          isGuessed={i < store.currentGuess}
-        />
-      ))}
-      {store.won && <h1>You won!</h1>}
-      {store.lost && <h1>You lost!</h1>}
-      {(store.won || store.lost) && (
-        <button onClick={store.init}>Play Again</button>
-      )}
+    <div className="w-screen h-screen flex flex-col justify-between items-center p-8">
+      <div className="flex flex-col gap-2 text-center bg-gray-600 py-8 px-20 rounded-[50px]">
+        <h1 className={`text-5xl uppercase ${headingStyle}`}>Re - Wordle</h1>
+        <h2 className={`text-2xl ${headingStyle}`}>React Worddle Game</h2>
+      </div>
+      <div className="grid grid-cols-5 gap-2">
+        {store.guesses.map((_, i) => (
+          <Guess
+            key={`guess-element-${i}`}
+            word={store.word}
+            guess={store.guesses[i]}
+            isGuessed={i < store.currentGuess}
+          />
+        ))}
+      </div>
       {/* @ts-ignore */}
       <Qwerty store={store} />
-      word: {store.word}
-      <br />
-      guesses: {JSON.stringify(store.guesses)}
     </div>
   );
 });

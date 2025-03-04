@@ -36,23 +36,29 @@ export default {
       this.currentGuess += 1;
     }
   },
-  handleKeyUp(e: any) {
+  handleKeyUp(e: any, pressedKey: string = "") {
     if (this.won || this.lost) {
       return;
     }
-    if (e.key === "Enter") {
+    if (e) {
+      pressedKey = e.key;
+    }
+    if (pressedKey === "Enter") {
       return this.submitGuess();
     }
-    if (e.key === "Backspace") {
+    if (pressedKey === "Backspace") {
       this.guesses[this.currentGuess] = this.guesses[this.currentGuess].slice(
         0,
         this.guesses[this.currentGuess].length - 1
       );
       return;
     }
-    if (this.guesses[this.currentGuess].length < 5 && e.key.match(/^[A-z]$/)) {
+    if (
+      this.guesses[this.currentGuess].length < 5 &&
+      pressedKey.match(/^[A-z]$/)
+    ) {
       this.guesses[this.currentGuess] =
-        this.guesses[this.currentGuess] + e.key.toLowerCase();
+        this.guesses[this.currentGuess] + pressedKey.toLowerCase();
     }
   },
 };

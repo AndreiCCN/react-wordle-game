@@ -2,7 +2,7 @@ import React from "react";
 
 const Guess = ({ isGuessed, guess, word }) => {
   return (
-    <div className="grid grid-cols-5 gap-2 mb-2">
+    <>
       {new Array(5).fill(0).map((_, i) => {
         const bgColor = !isGuessed
           ? "bg-black"
@@ -20,7 +20,7 @@ const Guess = ({ isGuessed, guess, word }) => {
           </div>
         );
       })}
-    </div>
+    </>
   );
 };
 
