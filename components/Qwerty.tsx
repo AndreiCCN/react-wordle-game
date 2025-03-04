@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 
-// @ts-ignore
+// @ts-expect-error
 export default observer(function Qwerty({ store }) {
   const qwerty = ["qwertyuiop", "asdfghjkl", "zxcvbnm"];
   const buttonStyle =
