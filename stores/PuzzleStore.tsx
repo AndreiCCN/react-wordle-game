@@ -1,4 +1,5 @@
 import words from "@/utils/words.json";
+
 export default {
   word: "",
   guesses: [],
@@ -7,7 +8,7 @@ export default {
     return this.guesses[this.currentGuess - 1] === this.word;
   },
   get lost() {
-    return this.currentGuess === 6;
+    return !this.won && this.currentGuess === 6;
   },
   get allGuesses() {
     return this.guesses.slice(0, this.currentGuess).join("").split("");

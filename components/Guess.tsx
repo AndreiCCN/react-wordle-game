@@ -10,7 +10,7 @@ const Guess = ({ isGuessed, guess, word }) => {
           ? "bg-green-400"
           : word.includes(guess[i])
           ? "bg-yellow-400"
-          : "bg-red-400";
+          : "bg-gray-800";
         return (
           <div
             key={`guess-letter-${i}`}

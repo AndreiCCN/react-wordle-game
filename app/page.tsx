@@ -31,8 +31,16 @@ export default observer(function Home() {
           isGuessed={i < store.currentGuess}
         />
       ))}
+      {store.won && <h1>You won!</h1>}
+      {store.lost && <h1>You lost!</h1>}
+      {(store.won || store.lost) && (
+        <button onClick={store.init}>Play Again</button>
+      )}
       {/* @ts-ignore */}
       <Qwerty store={store} />
+      word: {store.word}
+      <br />
+      guesses: {JSON.stringify(store.guesses)}
     </div>
   );
 });
