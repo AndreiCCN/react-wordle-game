@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Re-Wrodle - React Wordle Game",
+  title: "Re-Wordle - React Wordle Game",
   description: "React Wordle Game developed by AndreiCCN",
 };
 
