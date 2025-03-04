@@ -37,7 +37,7 @@ export default observer(function Home() {
           />
         ))}
       </div>
-      {/* @ts-expect-error */}
+      {/* @ts-expect-error: Should expect store */}
       <Qwerty store={store} />
     </div>
   );
