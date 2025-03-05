@@ -14,7 +14,7 @@ export default {
     return this.guesses.slice(0, this.currentGuess).join("").split("");
   },
   get exactGuesses() {
-    return this.word.split("").filter((letter, i) => {
+    return this.word.split("").filter((letter: string, i: number) => {
       return this.guesses
         .slice(0, this.currentGuess)
         .map((word) => word[i])
@@ -24,7 +24,7 @@ export default {
   get inexactGuesses() {
     return this.word
       .split("")
-      .filter((letter) => this.allGuesses.includes(letter));
+      .filter((letter: string) => this.allGuesses.includes(letter));
   },
   init() {
     this.word = words[Math.round(Math.random() * words.length)];
